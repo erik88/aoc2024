@@ -26,10 +26,26 @@ impl<T: Copy+PartialEq> Grid<T> {
         self.points.get_mut(yi)?.get_mut(xi)
     }
 
+
+    pub fn get_mut_pos(&mut self, p: Position) -> Option<&mut T> {
+        self.get_mut(p.x, p.y)
+    }
+
     pub fn map<V: Copy+PartialEq>(&self, f: fn(T) -> V) -> Grid<V> {
         return Grid::new(
             self.points.iter().map(|row| row.iter().map(|t| f(*t)).collect()).collect()
         );
+    }
+
+    pub fn for_each(&self, mut f: impl FnMut(T, Position) -> ()) {
+        for (y, row) in self.points.iter().enumerate() {
+            for (x, itm) in row.iter().enumerate() {
+                f(*itm, Position {
+                    x: x.try_into().unwrap(),
+                    y: y.try_into().unwrap()
+                })
+            }
+        }
     }
 
     pub fn find_first(&self, t: T) -> Option<Position> {
