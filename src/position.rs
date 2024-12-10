@@ -1,6 +1,6 @@
 use std::{fmt, ops};
 
-#[derive(Clone, Copy, Debug)]
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub struct Position {
     pub x: i32,
     pub y: i32
