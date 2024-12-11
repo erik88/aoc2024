@@ -1,4 +1,4 @@
-use crate::position::Position;
+use super::position::Position;
 
 #[derive(Clone)]
 pub struct Grid<T: Copy+PartialEq> {

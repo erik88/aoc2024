@@ -1,20 +1,10 @@
-use std::{
-    fs::File, io::{prelude::*, BufReader}, path::Path
-};
-
-fn lines_from_file(filename: impl AsRef<Path>) -> Vec<String> {
-    let file = File::open(filename).expect("no such file");
-    let buf = BufReader::new(file);
-    buf.lines()
-        .map(|l| l.expect("Could not parse line"))
-        .collect()
-}
+use aoc2024::{file, l2d::grid::Grid};
 
 // ---
 
 fn main() {
-    let lines = lines_from_file("input.txt");
-    let ans: i64 = lines.len().try_into().unwrap();
+    let numbers = file::digits_from_file("test.txt");
+    let num_grid = Grid::new(numbers);
 
-    println!("Part 1: {}", ans);
+    println!("Part 1: {}", num_grid.get(2,2).unwrap());
 }
