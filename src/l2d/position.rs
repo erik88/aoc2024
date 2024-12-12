@@ -6,6 +6,21 @@ pub struct Position {
     pub y: i32
 }
 
+impl Position {
+    pub fn up(&self) -> Position {
+        return Position { x: self.x, y: self.y -1 }
+    }
+    pub fn down(&self) -> Position {
+        return Position { x: self.x, y: self.y +1 }
+    }
+    pub fn left(&self) -> Position {
+        return Position { x: self.x-1, y: self.y }
+    }
+    pub fn right(&self) -> Position {
+        return Position { x: self.x+1, y: self.y }
+    }
+}
+
 impl fmt::Display for Position {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         write!(f, "({}, {})", self.x, self.y)

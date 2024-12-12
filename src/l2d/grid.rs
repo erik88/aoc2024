@@ -38,6 +38,11 @@ impl<T: Copy+PartialEq> Grid<T> {
         self.get_mut(p.x, p.y)
     }
 
+    pub fn set_pos(&mut self, t: T, p: Position) {
+        let itm = self.get_mut_pos(p).unwrap();
+        *itm = t;
+    }
+
     pub fn map<V: Copy+PartialEq>(&self, f: fn(T) -> V) -> Grid<V> {
         return Grid::new(
             self.points.iter().map(|row| row.iter().map(|t| f(*t)).collect()).collect()
