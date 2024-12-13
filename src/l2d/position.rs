@@ -2,8 +2,8 @@ use std::{fmt, ops};
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub struct Position {
-    pub x: i32,
-    pub y: i32
+    pub x: i64,
+    pub y: i64
 }
 
 impl Position {
@@ -49,7 +49,7 @@ impl ops::Sub<Position> for Position {
     type Output = Position;
 }
 
-impl ops::Mul<Position> for i32 {
+impl ops::Mul<Position> for i64 {
     fn mul(self, pos: Position) -> Position {
         Position {
             x: self * pos.x,
@@ -60,8 +60,8 @@ impl ops::Mul<Position> for i32 {
     type Output = Position;
 }
 
-impl ops::Mul<i32> for Position {
-    fn mul(self, k: i32) -> Position {
+impl ops::Mul<i64> for Position {
+    fn mul(self, k: i64) -> Position {
         Position {
             x: self.x * k,
             y: self.y * k

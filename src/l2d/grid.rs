@@ -26,7 +26,7 @@ impl<T: Copy+PartialEq> Grid<T> {
         self.points.get(yi)?.get(xi).map(|t| *t)
     }
 
-    pub fn get_mut(&mut self, x: i32, y:i32) -> Option<&mut T> {
+    pub fn get_mut(&mut self, x: i64, y:i64) -> Option<&mut T> {
         let xi: usize = x.try_into().ok()?;
         let yi: usize = y.try_into().ok()?;
 
@@ -75,8 +75,8 @@ impl<T: Copy+PartialEq> Grid<T> {
         for (yi, row) in self.points.iter().enumerate() {
             for (xi, itm) in row.iter().enumerate() {
                 if *itm == t {
-                    let x: i32 = xi.try_into().ok()?;
-                    let y: i32 = yi.try_into().ok()?;
+                    let x: i64 = xi.try_into().ok()?;
+                    let y: i64 = yi.try_into().ok()?;
                     return Some(Position { x, y })
                 }
             }
