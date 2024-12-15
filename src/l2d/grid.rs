@@ -3,11 +3,15 @@ use super::position::Position;
 #[derive(Clone)]
 pub struct Grid<T: Copy+PartialEq> {
     points: Vec<Vec<T>>,
+    pub width: u32,
+    pub height: u32
 }
 
 impl<T: Copy+PartialEq> Grid<T> {
     pub fn new(data: Vec<Vec<T>>) -> Grid<T> {
         Grid {
+            width: data.get(0).unwrap().len() as u32,
+            height: data.len() as u32,
             points: data,
         }
     }
