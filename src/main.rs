@@ -6,5 +6,5 @@ fn main() {
     let numbers = file::digits_from_file("test.txt");
     let num_grid = Grid::new(numbers);
 
-    println!("Part 1: {}", num_grid.get(2,2).unwrap());
+    println!("Answer: {}", 0);
 }
