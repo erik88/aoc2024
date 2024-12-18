@@ -7,12 +7,33 @@ pub struct Grid<T: Copy+PartialEq> {
     pub height: u32
 }
 
+impl Grid<char> {
+    pub fn print(&self) {
+        for p in &self.points {
+            let s: String = p.iter().collect();
+            println!("{}", s);
+        }
+    }
+}
+
 impl<T: Copy+PartialEq> Grid<T> {
     pub fn new(data: Vec<Vec<T>>) -> Grid<T> {
         Grid {
             width: data.get(0).unwrap().len() as u32,
             height: data.len() as u32,
             points: data,
+        }
+    }
+
+    pub fn from(item: T, width: u32, height: u32) -> Grid<T> {
+        let mut rows = Vec::new();
+        for _ in 0..height {
+            rows.push(vec![item; width.try_into().unwrap()]);
+        }
+        Grid {
+            width,
+            height,
+            points: rows,
         }
     }
 
@@ -45,6 +66,14 @@ impl<T: Copy+PartialEq> Grid<T> {
     pub fn set_pos(&mut self, t: T, p: Position) {
         let itm = self.get_mut_pos(p).unwrap();
         *itm = t;
+    }
+
+    pub fn try_set_pos(&mut self, t: T, p: Position) -> bool {
+        if let Some(itm) = self.get_mut_pos(p) {
+            *itm = t;
+            return true;
+        }
+        return false;
     }
 
     pub fn map<V: Copy+PartialEq>(&self, f: fn(T) -> V) -> Grid<V> {

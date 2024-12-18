@@ -1,4 +1,4 @@
-use std::{fmt, ops};
+use std::{cmp::Ordering, fmt, ops};
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash)]
 pub struct Position {
@@ -69,4 +69,28 @@ impl ops::Mul<i64> for Position {
     }
     
     type Output = Position;
+}
+
+impl Ord for Position {
+    fn cmp(&self, other: &Self) -> Ordering {
+        if self.y > other.y {
+            Ordering::Greater
+        } else if self.y == other.y {
+            if self.x > other.x {
+                return Ordering::Greater
+            } if self.x == other.x {
+                Ordering::Equal
+            } else {
+                Ordering::Less
+            }
+        } else {
+            Ordering::Less
+        }
+    }
+}
+
+impl PartialOrd for Position {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        Some(self.cmp(other))
+    }
 }
