@@ -37,7 +37,7 @@ impl<T: Copy+PartialEq> Grid<T> {
         }
     }
 
-    pub fn get(&self, x: i32, y:i32) -> Option<T> {
+    pub fn get(&self, x: i64, y:i64) -> Option<T> {
         let xi: usize = x.try_into().ok()?;
         let yi: usize = y.try_into().ok()?;
 
