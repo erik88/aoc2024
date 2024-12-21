@@ -1,0 +1,29 @@
+3,7,9,A
+
+m: ^A,^^<<A,>>A,vvvA
+c: ^A,<<^^A,>>A,vvvA
+^A<<^^A>>AvvvA
+
+m: <A>A,<AAv<AA>>^A,vAA^A,v<AAA>^A
+c: <A>A,v<<AA>^AA>A,vAA^A,v<AAA^>A
+
+m: v<<A>>^AvA^A,v<<A>>^AAv<A<A>>^AAvAA^<A>A,v<A>^AA<A>A,v<A<A>>^AAAvA^<A>A
+c: v<<A>>^AvA^A,v<A<AA>>^AAvA^<A>AAvA^A,v<A^>AA<A>A,v<A<A>>^AAA<Av>A^A
+
+# --------------------------------
+
+^A<<^^A>>AvvvA
+
+m: <,A,>,Av<<AA>^AA>AvAA^Av<AAA^>A
+
+m: v<<A,>>^A,v>,A^Av<A<AA>>^A>>^A>>A<^A>A>Av>A^Av<A^>A^A<^A>Av<A<A>>^A^>A^>A^Av>A^A
+c: v<<A,>>^A,v,A^A,v<A<AA>>^AAvA^<A>AAvA^A,v<A^>AA<A>A,v<A<A>>^AAA<Av>A^A
+
+
+Av: 126384 [(68, 29), (60, 980), (68, 179), (64, 456), (64, 379)]
+På: 126384 [(68, 29), (60, 980), (68, 179), (64, 456), (64, 379)]
+
+Av: 318280 [(168, 29), (150, 980), (168, 179), (166, 456), (160, 379)]
+På: 318280[(168, 29), (150, 980), (168, 179), (166, 456), (160, 379)]
+
+205699956
